@@ -8,18 +8,18 @@
     <title>게시판</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
 		<div class="navbar-header">
 		  <button type="button" class="navbar-toggle collapsed"
 		   data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 			aria-expanded="false">
-			<span class="icon-bar"></span> <!--바 하나의 작대기  -->
+			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
 		  <a class="navbar-brand" href="main.jsp">JSP 게시판 웹 사이트</a>
 		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		   <ul class="nav navbar-nav">
 		      <li><a href="main.jsp">메인 </a></li>
 		   	  <li><a href="bbs.jsp">게시판 </a></li>
@@ -28,10 +28,10 @@
 		       <li class="dropdown">
 		       	 <a href="#" class="dropdown-toggle"
 		           data-toggle="dropdown" role="button" aria-haspopup="true"
-		           aria-expanded="false">접속하기<span class="caret"></span></a> <!--접속하기 버튼-->
+		           aria-expanded="false">접속하기<span class="caret"></span></a>
 		           <ul class="dropdown-menu">
-		           	   <li class="active"><a href="login.jsp">로그인</a></li> <!--접속하기 버튼 드롭다운 메뉴 -->
-		           	   <li><a href="join.jsp">회원가입</a></li>  <!--접속하기 버튼 드롭다운 메뉴 -->
+		           	   <li class="active"><a href="login.jsp">로그인</a></li>
+		           	   <li><a href="join.jsp">회원가입</a></li>
 		           </ul>
 		       </li>
 		   </ul>
@@ -41,7 +41,14 @@
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
 			<div class="jumbotron" style="padding-top: 20px">
-			  	<form method="post" action="loginAction.jsp">
+
+			    <!-- ✅ 에러 메시지 추가 -->
+			    <% if (request.getAttribute("errorMsg") != null) { %>
+			        <script>alert('<%= request.getAttribute("errorMsg") %>')</script>
+			    <% } %>
+
+			  	<!-- ✅ action을 loginAction.jsp → loginAction 으로 변경 -->
+			  	<form method="post" action="loginAction">
 			  		<h3 style="text-align: center;">로그인 </h3>
 			  		<div class="form-group">
 			  			<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
